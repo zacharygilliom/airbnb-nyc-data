@@ -30,10 +30,13 @@ df_slice = df_slice[df_slice['minimum_nights'] <= 500]
 plot_dfs = df[(df['price'] < 300) & (df['reviews_per_month'] <= 8)]
 plot_data = pd.concat([plot_dfs['price'], plot_dfs['reviews_per_month']], axis=1)
 # sns.pairplot(df_slice)
-plt.subplot(221)
+plt.subplot(321)
 sns.kdeplot(df[df['price'] < 300]['price'], shade=True, color="r")
-plt.subplot(212)
+plt.subplot(312)
 sns.barplot(x='room_type', y='price', data=df)
-plt.subplot(222)
+plt.subplot(322)
 sns.kdeplot(df[df['reviews_per_month'] <= 4]['reviews_per_month'], shade=True)
+plt.subplot(313)
+sns.barplot(x='neighbourhood_group', y='price', data=df)
 plt.show()
+
